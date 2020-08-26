@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  skip_before_action :authorize, only: [:new, :create]
+  
   include CurrentCart
   before_action :set_cart, only: [:new, :create]
   before_action :ensure_cart_isnt_empty, only: :new
@@ -37,6 +39,12 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+        # do not send confirmation email straight ahead
+        OrderMailer.received(@order).deliver_later
+
+        # To queue a job using Active Job, use the method perform_later() on the job class
+        # and pass it the arguments you want to be given to the perform() method
+        #ChargeOrderJob.perform_later(@order,pay_type_params.to_h)
         format.html { redirect_to store_index_url, notice:
           'Thank you for your order.' }
         format.json { render :show, status: :created, location: @order }
@@ -80,6 +88,7 @@ class OrdersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def order_params
       params.require(:order).permit(:name, :address, :email, :pay_type)
+      #, :routing_number, :account_number, :po_number)
     end
 
   private

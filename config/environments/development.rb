@@ -40,7 +40,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -70,5 +70,18 @@ Rails.application.configure do
 
   #from page 171
   config.action_cable.disable_request_forgery_protection = true
+
+  #from page 220 : have to decide how you want mail delivered
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+   # domain: "domain.of.sender.net",
+    authentication: "plain",
+    user_name: "endraum.test",
+    password: "Snickers2020",
+    enable_starttls_auto: true
+  }
 
 end
