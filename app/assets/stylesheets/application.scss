@@ -16,7 +16,7 @@
  *= require_self
  */
 
- body {
+body {
   margin: 0;
   padding: 0;
 }
@@ -207,4 +207,10 @@ nav.logged_in_nav {
     }
   }
 }
+
+.locale {
+  float: right;
+  margin: 1em;
+}
+
 //

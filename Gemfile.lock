@@ -82,6 +82,8 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.3)
       concurrent-ruby (~> 1.0)
+    i18n-js (3.7.1)
+      i18n (>= 0.6.6)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     loofah (2.6.0)
@@ -199,6 +201,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  i18n-js
   jbuilder (~> 2.7)
   pg (>= 0.18, < 2.0)
   pry (~> 0.13.1)

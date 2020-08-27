@@ -31,6 +31,11 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # Pry 
 gem 'pry', '~> 0.13.1'
 
+# Since React is rendering our payment details components—–not Rails—–we
+# need to make our translations available to React, meaning they must be
+# available in JavaScript. The i18n-js library will do just that.
+gem 'i18n-js'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

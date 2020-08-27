@@ -23,5 +23,15 @@ module Depot
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    config.filter_parameters += [ :credit_card_number ]
+
+# First, we’ll configure i18n-js to convert our translations. This is done by a
+# middleware that the gem provides.2 A middleware is a way to add behavior
+# to all requests served by a Rails app by manipulating an internal data structure.
+    config.middleware.use I18n::JS::Middleware
+ 
   end
 end
+
+
